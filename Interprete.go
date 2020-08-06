@@ -58,9 +58,14 @@ func LineaComando(comando string) {
 
 //EjecutarComando : metodo para ejecutar el codigo de entrada.
 func EjecutarComando(commandArray []string) {
-	data := strings.ToLower(commandArray[0])
-	if data == "crear" {
-		fmt.Println("Creando un archivo")
+	data := strings.ToLower(commandArray[2])
+	if data == "file" {
+		fmt.Println("ARCHIVO")
+
+	} else if data == "crear" {
+
+		fmt.Println("CREAR ARCHIVO")
+
 	} else {
 		fmt.Println("Otro Comando")
 	}
