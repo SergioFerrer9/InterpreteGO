@@ -12,3 +12,40 @@ Mkdisk –size~:~10 –path~:~"/home/misdiscos/Disco4.disk"
 
 #Creará un disco de 10 Mb ya que no hay parámetro unit
 Mkdisk –size~:~10 –path~:~"/home/mis discos/Disco4.disk"
+
+	for i := 0; arreglo[i] != "\n"; i++ {
+		if arreglo[i] == "\"" {
+			for j := i; arreglo[j] != "\""; j++ {
+				if arreglo[j] == " " {
+					arreglo[j] = "_"
+					return
+				}
+			}
+		}
+	}
+
+
+    //DividirArreglo : Dividir el arreglo de entrada por los espacios en blanco.
+func DividirArreglo(comando string) {
+	var arreglo []byte = []byte(comando)
+	fmt.Println("tam ", len(arreglo))
+
+	bandera := 0
+
+	for i := 0; i <= len(arreglo)-1; i++ {
+		//fmt.Println(i, " ", string(arreglo[i]))
+		if string(arreglo[i]) == "\"" {
+			fmt.Println("ENCONTRADO1")
+			bandera = 1
+
+		}
+
+		if string(arreglo[i]) == " " && bandera == 1 {
+			arreglo[i] = 95
+		}
+
+	}
+
+	fmt.Println(string(arreglo))
+
+}

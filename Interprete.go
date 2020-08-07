@@ -36,9 +36,27 @@ func Interpretar() {
 
 //DividirArreglo : Dividir el arreglo de entrada por los espacios en blanco.
 func DividirArreglo(comando string) {
-	var arreglo []string
-	arreglo = strings.Split(comando, " ")
-	ArregloDividido(arreglo) //Ejecutamos el comando.
+	var arreglo []byte = []byte(comando)
+	fmt.Println("tam ", len(arreglo))
+
+	bandera := 0
+
+	for i := 0; i <= len(arreglo)-1; i++ {
+		//fmt.Println(i, " ", string(arreglo[i]))
+		if string(arreglo[i]) == "\"" {
+			fmt.Println("ENCONTRADO1")
+			bandera = 1
+
+		}
+
+		if string(arreglo[i]) == " " && bandera == 1 {
+			arreglo[i] = 95
+		}
+
+	}
+
+	fmt.Println(string(arreglo))
+
 }
 
 //ArregloDividido : Arreglo dividido por medio de los espacios en blanco.
@@ -57,6 +75,7 @@ func ArregloDividido(arreglo []string) {
 	if tamArreglo == 4 {
 		aux3 := strings.ToLower(arreglo[3])
 		fmt.Println(aux3)
+
 	}
 
 	if aux1 == "file" {
