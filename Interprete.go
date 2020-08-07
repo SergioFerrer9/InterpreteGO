@@ -16,53 +16,53 @@ func main() {
 func Interpretar() {
 
 	finalizar := 0
-	inicio := "Esta es la consola de comandos, ingrese X para finalizar."
+	inicio := "MANEJO E IMPLEMENTACION DE ARCHIVOS.\n"
 	fmt.Println(inicio)
 
 	///Leyendo desde consola.
-	reader := bufio.NewReader(os.Stdin)
-	fmt.Print("Ingrese texto: ")
-	comando, _ := reader.ReadString('\n')
-	fmt.Println(comando)
-
-	if comando == "x" {
-		finalizar = 1
-	} else {
-		if comando != "" {
-			LineaComando(comando)
-		}
-	}
-
 	for finalizar != 1 {
-		fmt.Println("Insertar Comando: ")
+		fmt.Println("INGRESAR COMANDO>>>: ")
 		reader := bufio.NewReader(os.Stdin)
 		comando, _ := reader.ReadString('\n')
 		if comando == "x" {
 			finalizar = 1
-		} else {
-			if comando != "" {
-				LineaComando(comando)
-			}
+		} else if comando != "" {
+			DividirArreglo(comando)
+
 		}
 
 	}
 }
 
-//LineaComando : obtiene el texto de entrada.
-func LineaComando(comando string) {
-	var commandArray []string
-	commandArray = strings.Split(comando, " ")
-	fmt.Println(commandArray[1])
-	EjecutarComando(commandArray) //Ejecutamos el comando.
+//DividirArreglo : Dividir el arreglo de entrada por los espacios en blanco.
+func DividirArreglo(comando string) {
+	var arreglo []string
+	arreglo = strings.Split(comando, " ")
+	ArregloDividido(arreglo) //Ejecutamos el comando.
 }
 
-//EjecutarComando : metodo para ejecutar el codigo de entrada.
-func EjecutarComando(commandArray []string) {
-	data := strings.ToLower(commandArray[2])
-	if data == "file" {
+//ArregloDividido : Arreglo dividido por medio de los espacios en blanco.
+func ArregloDividido(arreglo []string) {
+
+	tamArreglo := len(arreglo)
+	fmt.Println("tamaño del arreglo:", tamArreglo)
+	aux0 := strings.ToLower(arreglo[0])
+	aux1 := strings.ToLower(arreglo[1])
+	aux2 := strings.ToLower(arreglo[2])
+
+	fmt.Println(aux0)
+	fmt.Println(aux1)
+	fmt.Println(aux2)
+
+	if tamArreglo == 4 {
+		aux3 := strings.ToLower(arreglo[3])
+		fmt.Println(aux3)
+	}
+
+	if aux1 == "file" {
 		fmt.Println("ARCHIVO")
 
-	} else if data == "crear" {
+	} else if aux1 == "crear" {
 
 		fmt.Println("CREAR ARCHIVO")
 
