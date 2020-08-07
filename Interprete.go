@@ -24,8 +24,11 @@ func Interpretar() {
 		fmt.Println("INGRESAR COMANDO>>>: ")
 		reader := bufio.NewReader(os.Stdin)
 		comando, _ := reader.ReadString('\n')
-		if comando == "x" {
+
+		if comando == "x\n" {
+			fmt.Println("FINALIZAR")
 			finalizar = 1
+			return
 		} else if comando != "" {
 			DividirArreglo(comando)
 
@@ -42,11 +45,9 @@ func DividirArreglo(comando string) {
 	bandera := 0
 
 	for i := 0; i <= len(arreglo)-1; i++ {
-		//fmt.Println(i, " ", string(arreglo[i]))
-		if string(arreglo[i]) == "\"" {
-			fmt.Println("ENCONTRADO1")
-			bandera = 1
 
+		if string(arreglo[i]) == "\"" {
+			bandera = 1
 		}
 
 		if string(arreglo[i]) == " " && bandera == 1 {
@@ -55,7 +56,11 @@ func DividirArreglo(comando string) {
 
 	}
 
-	fmt.Println(string(arreglo))
+	newArreglo := string(arreglo)
+
+	var commandArray []string
+	commandArray = strings.Split(newArreglo, " ")
+	ArregloDividido(commandArray) //Ejecutamos el comando.
 
 }
 
